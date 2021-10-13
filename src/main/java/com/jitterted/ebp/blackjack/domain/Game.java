@@ -13,6 +13,9 @@ public class Game {
     public void initialDeal() {
         dealRoundOfCards();
         dealRoundOfCards();
+        if (playerHand.isBlackjack()) {
+            playerDone = true;
+        }
     }
 
     public void dealRoundOfCards() {
@@ -26,10 +29,12 @@ public class Game {
             return GameOutcome.PLAYER_BUSTS;
         } else if (dealerHand.isBusted()) {
             return GameOutcome.DEALER_BUSTS;
-        } else if (playerHand.beats(dealerHand)) {
-            return GameOutcome.PLAYER_BEATS_DEALER;
+        } else if (playerHand.isBlackjack()) {
+            return GameOutcome.BLACKJACK;
         } else if (playerHand.pushes(dealerHand)) {
             return GameOutcome.PLAYER_PUSHES_DEALER;
+        } else if (playerHand.beats(dealerHand)) {
+            return GameOutcome.PLAYER_BEATS_DEALER;
         } else {
             return GameOutcome.PLAYER_LOSES;
         }
@@ -37,7 +42,7 @@ public class Game {
 
     public void dealerTurn() {
         // Dealer makes its choice automatically based on a simple heuristic (<=16 must hit, =>17 must stand)
-        if (!playerHand.isBusted()) {
+        if (!playerHand.isBusted() && !playerHand.isBlackjack()) {
             while (dealerHand.dealerMustDrawCard()) {
                 dealerHand.drawFrom(deck);
             }
@@ -53,8 +58,10 @@ public class Game {
     }
 
     public void playerHits() {
-        playerHand.drawFrom(deck);
-        playerDone = playerHand.isBusted();
+        if (!playerDone) {
+            playerHand.drawFrom(deck);
+            playerDone = playerHand.isBusted();
+        }
     }
 
     public void playerStands() {

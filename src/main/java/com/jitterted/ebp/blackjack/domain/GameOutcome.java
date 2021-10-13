@@ -5,7 +5,8 @@ public enum GameOutcome {
     PLAYER_BEATS_DEALER("You beat the Dealer! 💵"),
     PLAYER_PUSHES_DEALER("Push: Nobody wins, we'll call it even."),
     PLAYER_LOSES("You lost to the Dealer. 💸"),
-    PLAYER_BUSTS("You Busted, so you lose.  💸");
+    PLAYER_BUSTS("You Busted, so you lose.  💸"),
+    BLACKJACK("You won Blackjack!!! 💵💵💵💵");
 
     private String message;
 
