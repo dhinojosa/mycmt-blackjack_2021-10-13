@@ -1,5 +1,9 @@
-package com.jitterted.ebp.blackjack;
+package com.jitterted.ebp.blackjack.domain;
 
+import com.jitterted.ebp.blackjack.adapter.in.console.ConsoleCard;
+import com.jitterted.ebp.blackjack.domain.Card;
+import com.jitterted.ebp.blackjack.domain.Rank;
+import com.jitterted.ebp.blackjack.domain.Suit;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -11,7 +15,7 @@ class CardTest {
     private static final Rank DUMMY_RANK = Rank.TEN;
 
     @Test
-    public void withNumberCardHasNumericValueOfTheNumber() throws Exception {
+    public void withNumberCardHasNumericValueOfTheNumber() {
         Card card = new Card(DUMMY_SUIT, Rank.SEVEN);
 
         assertThat(card.rankValue())
@@ -19,7 +23,7 @@ class CardTest {
     }
 
     @Test
-    public void withValueOfQueenHasNumericValueOf10() throws Exception {
+    public void withValueOfQueenHasNumericValueOf10() {
         Card card = new Card(DUMMY_SUIT, Rank.QUEEN);
 
         assertThat(card.rankValue())
@@ -27,7 +31,7 @@ class CardTest {
     }
 
     @Test
-    public void withAceHasNumericValueOf1() throws Exception {
+    public void withAceHasNumericValueOf1() {
         Card card = new Card(DUMMY_SUIT, Rank.ACE);
 
         assertThat(card.rankValue())
@@ -35,7 +39,7 @@ class CardTest {
     }
 
     @Test
-    public void suitOfHeartsOrDiamondsIsDisplayedInRed() throws Exception {
+    public void suitOfHeartsOrDiamondsIsDisplayedInRed() {
         // given a card with Hearts or Diamonds
         Card heartsCard = new Card(Suit.HEARTS, DUMMY_RANK);
         Card diamondsCard = new Card(Suit.DIAMONDS, DUMMY_RANK);

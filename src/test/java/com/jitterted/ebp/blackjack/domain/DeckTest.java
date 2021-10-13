@@ -1,5 +1,7 @@
-package com.jitterted.ebp.blackjack;
+package com.jitterted.ebp.blackjack.domain;
 
+import com.jitterted.ebp.blackjack.domain.Card;
+import com.jitterted.ebp.blackjack.domain.Deck;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
@@ -10,7 +12,7 @@ import static org.assertj.core.api.Assertions.*;
 class DeckTest {
 
     @Test
-    public void fullDeckHas52Cards() throws Exception {
+    public void fullDeckHas52Cards() {
         Deck deck = new Deck();
 
         assertThat(deck.size())
@@ -18,7 +20,7 @@ class DeckTest {
     }
 
     @Test
-    public void drawCardFromDeckReducesDeckSizeByOne() throws Exception {
+    public void drawCardFromDeckReducesDeckSizeByOne() {
         Deck deck = new Deck();
 
         deck.draw();
@@ -28,7 +30,7 @@ class DeckTest {
     }
 
     @Test
-    public void drawCardFromDeckReturnsValidCard() throws Exception {
+    public void drawCardFromDeckReturnsValidCard() {
         Deck deck = new Deck();
 
         Card card = deck.draw();
@@ -41,7 +43,7 @@ class DeckTest {
     }
 
     @Test
-    public void drawAllCardsResultsInSetOf52UniqueCards() throws Exception {
+    public void drawAllCardsResultsInSetOf52UniqueCards() {
         Deck deck = new Deck();
 
         Set<Card> drawnCards = new HashSet<>();

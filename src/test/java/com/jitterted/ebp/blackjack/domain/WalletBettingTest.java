@@ -1,5 +1,6 @@
-package com.jitterted.ebp.blackjack;
+package com.jitterted.ebp.blackjack.domain;
 
+import com.jitterted.ebp.blackjack.domain.Wallet;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -7,7 +8,7 @@ import static org.assertj.core.api.Assertions.*;
 class WalletBettingTest {
 
     @Test
-    public void walletWith12Bet8BalanceIs4() throws Exception {
+    public void walletWith12Bet8BalanceIs4() {
         // GIVEN (ARRANGE/SETUP)
         Wallet wallet = new Wallet();
         wallet.addMoney(12);
@@ -21,7 +22,7 @@ class WalletBettingTest {
     }
 
     @Test
-    public void walletWith27Bet7AndBet9BalanceIs11() throws Exception {
+    public void walletWith27Bet7AndBet9BalanceIs11() {
         Wallet wallet = new Wallet();
         wallet.addMoney(27);
 
@@ -33,7 +34,7 @@ class WalletBettingTest {
     }
 
     @Test
-    public void walletWithMoneyWhenBetFullBalanceIsEmpty() throws Exception {
+    public void walletWithMoneyWhenBetFullBalanceIsEmpty() {
         Wallet wallet = new Wallet();
         wallet.addMoney(33);
 
@@ -44,13 +45,11 @@ class WalletBettingTest {
     }
 
     @Test
-    public void betMoreThanBalanceThrowsException() throws Exception {
+    public void betMoreThanBalanceThrowsException() {
         Wallet wallet = new Wallet();
         wallet.addMoney(73);
 
-        assertThatThrownBy(() -> {
-            wallet.bet(74);
-        }).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> wallet.bet(74)).isInstanceOf(IllegalArgumentException.class);
     }
 
 }
