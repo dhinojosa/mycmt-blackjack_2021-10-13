@@ -17,7 +17,7 @@ public class GameResultDto {
 
     public static GameResultDto of(Game game) {
         return new GameResultDto("Danno",
-                                 game.determineOutcome().toString(),
+                                 game.determineOutcome().message(),
                                  game.playerHand().displayValue(),
                                  game.dealerHand().displayValue());
     }
