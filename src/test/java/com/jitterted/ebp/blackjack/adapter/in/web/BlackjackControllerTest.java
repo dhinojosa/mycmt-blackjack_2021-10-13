@@ -22,7 +22,7 @@ public class BlackjackControllerTest {
     void testThatStartOfGameIsInitialized() {
         //Domain
         Game game = new Game(new Deck());
-        BlackjackController blackjackController = new BlackjackController(game);
+        BlackjackController blackjackController = new BlackjackController(() -> game);
         blackjackController.startGame();
 
         List<Card> result = game.dealerHand().cards();
@@ -36,7 +36,7 @@ public class BlackjackControllerTest {
                                              new Card(Suit.DIAMONDS, Rank.KING),
                                              new Card(Suit.CLUBS, Rank.THREE));
         Game game = new Game(stubDeck);
-        BlackjackController blackjackController = new BlackjackController(game);
+        BlackjackController blackjackController = new BlackjackController(() -> game);
         blackjackController.startGame();
 
         Model model = new ConcurrentModel();
