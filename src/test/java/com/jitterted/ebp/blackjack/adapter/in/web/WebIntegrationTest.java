@@ -43,6 +43,7 @@ public class WebIntegrationTest {
 
     @Test
     void postToStandShouldRedirect() throws Exception {
+        mockMvc.perform(post("/start-game"));
         mockMvc.perform(post("/stand"))
                .andExpect(status().is3xxRedirection());
     }
