@@ -28,7 +28,17 @@ public class BlackjackController {
     @GetMapping("/game")
     public String viewGame(Model model) {
         model.addAttribute("gameView", GameView.of(currentGame));
-        return "blackjack";
+        if (currentGame.isPlayerDone()) {
+            model.addAttribute("outcome", currentGame.determineOutcome().message());
+            return "done";
+        } else {
+            return "blackjack";
+        }
     }
 
+    @PostMapping("/hit")
+    public String hitCommand() {
+        currentGame.playerHits();
+        return "redirect:/game";
+    }
 }
